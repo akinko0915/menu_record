@@ -1,14 +1,14 @@
 #!/usr/bin/env node
 
-// 最後の返り値が変数なのはおかしい。Promiseを返さないといけないから。
+// fetch()と.json()は非同期処理でPromiseが戻り値であることを知らなかった。だから、fetchとjsonの後でthenを使わないといけないんだ
 const getRecipes = () => {
-  const url = "http://localhost:3000/recipes";
-  return new Promise((resolve) => {
-    const response = fetch(url);
-    const recipes = response.json();
-    resolve();
-    return recipes;
-  });
+  return new Promise((resolve, reject) => {
+    const url = "http://localhost:3000/recipes";
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => resolve(data))
+      .catch((err) => reject(err));
+  }, 1000);
 };
 
 const searchedRecipes = () => {
@@ -17,9 +17,9 @@ const searchedRecipes = () => {
   const result = document.querySelector(".result_recipe");
 
   searchButton.addEventListener("click", async () => {
+    const input = inputElement.value;
     getRecipes()
-      .then(() => {
-        const input = inputElement.value;
+      .then((recipes) => {
         const matches = recipes.filter((recipe) => recipe.name.includes(input));
 
         matches.forEach((recipe) => {
