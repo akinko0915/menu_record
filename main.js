@@ -1,64 +1,37 @@
 #!/usr/bin/env node
-const recipes = [
-    {
-      name: "ダイエットラザニア",
-      url: "https://www.instagram.com/reel/DKHViY0Tr2_/?igsh=cnBmaXhiZW9jNmls"
-    },
-    {
-      name: "ごまだれが濃厚♪基本のバンバンジー（棒棒鶏）",
-      url: "https://delishkitchen.tv/recipes/194135459369058708#share_ios"
-    },
-    {
-      name: "ナスの肉詰め",
-      url: "https://www.instagram.com/reel/DJak_EwTKaU/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
-    },
-    {
-      name: "香ばしい醤油の香り♪王道焼きおにぎり",
-      url: "https://delishkitchen.tv/recipes/203106944695665898#share_ios"
-    },
-    {
-      name: "ブロッコリーと卵のオーロラ炒め",
-      url: "https://delishkitchen.tv/recipes/239672013076038762"
-    },
-    {
-      name: "アボカド丼",
-      url: "https://www.kurashiru.com/recipes/73906c55-eeb8-4b73-8091-0fb57bc2887c"
-    },
-    {
-      name: "ごま油が香る！ほうれん草とエリンギのナムル",
-      url: "https://delishkitchen.tv/recipes/140474563711467789#share_ios"
-    },
-    {
-      name: "飴色玉ねぎが染みる♪なすチキぽん酢",
-      url: "https://delishkitchen.tv/recipes/159507684406591980#share_ios"
-    },
-    {
-      name: "担々麺",
-      url: "https://www.instagram.com/reel/DJ86QFgz8V5/?igsh=MTRlZjRtcWs2ZGNrOQ=="
-    },
-    {
-      name: "チーズ入り！鶏むね肉のピカタ",
-      url: "https://www.kurashiru.com/recipes/46722f9f-0ba4-4d98-8a97-fe8eda5d60f7"
-    }
-];
-names = recipes.map((recipe) => recipe.name);
 
-document.addEventListener('DOMContentLoaded', () => {
-  const inputElement = document.querySelector('.recipe-name');
-  const searchButton = document.querySelector('.search-recipe');
-  const result = document.querySelector('.result_recipe');
-  
-  searchButton.addEventListener("click", () => {
-    const input = inputElement.value;
-    const matches = recipes.filter(recipe => 
-			recipe.name.includes(input)
-		);
-
-		matches.forEach(recipe => {
-			const div = document.createElement("div");
-			result.innerHTML = `<a href="${recipe.url}" target="_blank">${recipe.name}</a>`;
-			result.appendChild(div);
-		});
+// 最後の返り値が変数なのはおかしい。Promiseを返さないといけないから。
+const getRecipes = () => {
+  const url = "http://localhost:3000/recipes";
+  return new Promise((resolve) => {
+    const response = fetch(url);
+    const recipes = response.json();
+    resolve();
+    return recipes;
   });
-});
-  
+};
+
+const searchedRecipes = () => {
+  const inputElement = document.querySelector(".recipe-name");
+  const searchButton = document.querySelector(".search-recipe");
+  const result = document.querySelector(".result_recipe");
+
+  searchButton.addEventListener("click", async () => {
+    getRecipes()
+      .then(() => {
+        const input = inputElement.value;
+        const matches = recipes.filter((recipe) => recipe.name.includes(input));
+
+        matches.forEach((recipe) => {
+          const div = document.createElement("div");
+          result.innerHTML = `<a href="${recipe.url}" target="_blank">${recipe.name}</a>`;
+          result.appendChild(div);
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  });
+};
+
+document.addEventListener("DOMContentLoaded", searchedRecipes);
