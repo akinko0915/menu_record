@@ -1,15 +1,18 @@
 #!/usr/bin/env node
 
-// fetch()と.json()は非同期処理でPromiseが戻り値であることを知らなかった。だから、fetchとjsonの後でthenを使わないといけないんだ
-const getRecipes = () => {
-  return new Promise((resolve, reject) => {
-    const url = "http://localhost:3000/recipes";
-    fetch(url)
-      .then((response) => response.json())
-      .then((data) => resolve(data))
-      .catch((err) => reject(err));
-  }, 1000);
-};
+async function getRecipes() {
+  const url = "http://localhost:3000/recipes";
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Response status: ${response.status}`);
+    }
+    const recipes = await response.json();
+    return recipes;
+  } catch (error) {
+    console.log(error.message);
+  }
+}
 
 const searchedRecipes = () => {
   const inputElement = document.querySelector(".recipe-name");
@@ -18,19 +21,19 @@ const searchedRecipes = () => {
 
   searchButton.addEventListener("click", async () => {
     const input = inputElement.value;
-    getRecipes()
-      .then((recipes) => {
-        const matches = recipes.filter((recipe) => recipe.name.includes(input));
-
-        matches.forEach((recipe) => {
-          const div = document.createElement("div");
-          result.innerHTML = `<a href="${recipe.url}" target="_blank">${recipe.name}</a>`;
-          result.appendChild(div);
-        });
-      })
-      .catch((error) => {
-        console.log(error);
+    const recipes = await getRecipes();
+    const matches = recipes.filter((recipe) => recipe.name.includes(input));
+    if (matches.length == 0) {
+      const div = document.createElement("div");
+      result.innerHTML = "該当するレシピがありませんでした";
+      result.appendChild(div);
+    } else {
+      matches.forEach((recipe) => {
+        const div = document.createElement("div");
+        result.innerHTML = `<a href="${recipe.url}" target="_blank">${recipe.name}</a>`;
+        result.appendChild(div);
       });
+    }
   });
 };
 
