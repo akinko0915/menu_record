@@ -15,24 +15,28 @@ async function getRecipes() {
 }
 
 const searchedRecipes = () => {
-  const inputElement = document.querySelector(".recipe-name");
+  const inputIngredient = document.querySelector(".ingredient");
   const searchButton = document.querySelector(".search-recipe");
   const result = document.querySelector(".result_recipe");
 
   searchButton.addEventListener("click", async () => {
-    const input = inputElement.value;
+    const input_ingredient = inputIngredient.value;
     const recipes = await getRecipes();
-    const matches = recipes.filter((recipe) => recipe.name.includes(input));
-    if (matches.length == 0) {
+
+    const matches = recipes.filter((recipe) =>
+      recipe.ingredients.find((ingredient) => ingredient === input_ingredient)
+    );
+
+    if (matches.length != 0) {
+      let htmlContent = "";
+      matches.forEach((recipe) => {
+        htmlContent += `<div><a href="${recipe.url}" target="_blank">${recipe.name}</a></div>`;
+      });
+      result.innerHTML = htmlContent;
+    } else {
       const div = document.createElement("div");
       result.innerHTML = "該当するレシピがありませんでした";
       result.appendChild(div);
-    } else {
-      matches.forEach((recipe) => {
-        const div = document.createElement("div");
-        result.innerHTML = `<a href="${recipe.url}" target="_blank">${recipe.name}</a>`;
-        result.appendChild(div);
-      });
     }
   });
 };

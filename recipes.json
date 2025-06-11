@@ -2,43 +2,85 @@
   "recipes": [
     {
       "name": "ダイエットラザニア",
-      "url": "https://www.instagram.com/reel/DKHViY0Tr2_/?igsh=cnBmaXhiZW9jNmls"
+      "url": "https://www.instagram.com/reel/DKHViY0Tr2_/?igsh=cnBmaXhiZW9jNmls",
+      "ingredients": [
+        "ラザニアシート",
+        "鶏ひき肉",
+        "チーズ",
+        "トマトソース",
+        "玉ねぎ"
+      ],
+      "category": "主菜",
+      "cuisine": "洋食"
     },
     {
       "name": "ごまだれが濃厚♪基本のバンバンジー（棒棒鶏）",
-      "url": "https://delishkitchen.tv/recipes/194135459369058708#share_ios"
+      "url": "https://delishkitchen.tv/recipes/194135459369058708#share_ios",
+      "ingredients": ["鶏むね肉", "きゅうり", "ごま", "醤油", "酢"],
+      "category": "主菜",
+      "cuisine": "中華"
     },
     {
       "name": "なすの肉詰め",
-      "url": "https://www.instagram.com/reel/DJak_EwTKaU/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+      "url": "https://www.instagram.com/reel/DJak_EwTKaU/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      "ingredients": ["なす", "豚ひき肉", "玉ねぎ", "パン粉", "卵"],
+      "category": "主菜",
+      "cuisine": "和食"
     },
     {
       "name": "香ばしい醤油の香り♪王道焼きおにぎり",
-      "url": "https://delishkitchen.tv/recipes/203106944695665898#share_ios"
+      "url": "https://delishkitchen.tv/recipes/203106944695665898#share_ios",
+      "ingredients": ["米", "醤油", "海苔", "ごま油"],
+      "category": "主食",
+      "cuisine": "和食"
     },
     {
       "name": "ブロッコリーと卵のオーロラ炒め",
-      "url": "https://delishkitchen.tv/recipes/239672013076038762"
+      "url": "https://delishkitchen.tv/recipes/239672013076038762",
+      "ingredients": [
+        "ブロッコリー",
+        "卵",
+        "マヨネーズ",
+        "ケチャップ",
+        "バター"
+      ],
+      "category": "副菜",
+      "cuisine": "洋食"
     },
     {
       "name": "アボカド丼",
-      "url": "https://www.kurashiru.com/recipes/73906c55-eeb8-4b73-8091-0fb57bc2887c"
+      "url": "https://www.kurashiru.com/recipes/73906c55-eeb8-4b73-8091-0fb57bc2887c",
+      "ingredients": ["アボカド", "米", "醤油", "わさび", "海苔"],
+      "category": "主食",
+      "cuisine": "和食"
     },
     {
       "name": "ごま油が香る！ほうれん草とエリンギのナムル",
-      "url": "https://delishkitchen.tv/recipes/140474563711467789#share_ios"
+      "url": "https://delishkitchen.tv/recipes/140474563711467789#share_ios",
+      "ingredients": ["ほうれん草", "エリンギ", "ごま油", "ごま", "にんにく"],
+      "category": "副菜",
+      "cuisine": "韓国料理"
     },
     {
       "name": "飴色玉ねぎが染みる♪なすチキぽん酢",
-      "url": "https://delishkitchen.tv/recipes/159507684406591980#share_ios"
+      "url": "https://delishkitchen.tv/recipes/159507684406591980#share_ios",
+      "ingredients": ["なす", "鶏もも肉", "玉ねぎ", "ポン酢", "ごま油"],
+      "category": "主菜",
+      "cuisine": "和食"
     },
     {
       "name": "担々麺",
-      "url": "https://www.instagram.com/reel/DJ86QFgz8V5/?igsh=MTRlZjRtcWs2ZGNrOQ=="
+      "url": "https://www.instagram.com/reel/DJ86QFgz8V5/?igsh=MTRlZjRtcWs2ZGNrOQ==",
+      "ingredients": ["中華麺", "豚ひき肉", "ごま", "豆板醤", "味噌"],
+      "category": "主食",
+      "cuisine": "中華"
     },
     {
       "name": "チーズ入り！鶏むね肉のピカタ",
-      "url": "https://www.kurashiru.com/recipes/46722f9f-0ba4-4d98-8a97-fe8eda5d60f7"
+      "url": "https://www.kurashiru.com/recipes/46722f9f-0ba4-4d98-8a97-fe8eda5d60f7",
+      "ingredients": ["鶏むね肉", "チーズ", "卵", "小麦粉", "オリーブオイル"],
+      "category": "主菜",
+      "cuisine": "洋食"
     }
   ]
 }
