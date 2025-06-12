@@ -6,8 +6,21 @@
     <title>Repeated Recipe</title>
   </head>
   <body>
-    <input type="text" class="ingredient" value="材料名" />
-    <input type="button" class="search-recipe" value="レシピ検索" />
+    <form action="" method="post">
+      <div class="form-area">
+        <label for="ingredient">材料名</label>
+        <input type="text" class="ingredient" />
+      </div>
+      <div class="form-area">
+        <label for="category">カテゴリー名</label>
+        <input type="text" class="category" />
+      </div>
+      <div class="form-area">
+        <label for="cuisine">料理の種類</label>
+        <input type="text" class="cuisine" />
+      </div>
+      <input type="button" class="search-recipe" value="レシピ検索" />
+    </form>
     <div class="result_recipe"></div>
     <script src="main.js" defer></script>
   </body>

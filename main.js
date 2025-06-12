@@ -16,16 +16,30 @@ async function getRecipes() {
 
 const searchedRecipes = () => {
   const inputIngredient = document.querySelector(".ingredient");
+  const inputCategory = document.querySelector(".category");
+  const inputCuisine = document.querySelector(".cuisine");
   const searchButton = document.querySelector(".search-recipe");
   const result = document.querySelector(".result_recipe");
 
   searchButton.addEventListener("click", async () => {
     const input_ingredient = inputIngredient.value;
+    const input_category = inputCategory.value;
+    const input_cuisine = inputCuisine.value;
     const recipes = await getRecipes();
 
-    const matches = recipes.filter((recipe) =>
-      recipe.ingredients.find((ingredient) => ingredient === input_ingredient)
-    );
+    let matches = recipes;
+    if (input_ingredient) {
+      matches = matches.filter((recipe) =>
+        recipe.ingredients.find((ingredient) => ingredient === input_ingredient)
+      );
+    }
+    if (input_category) {
+      matches = matches.filter((recipe) => recipe.category === input_category);
+    }
+    if (input_cuisine) {
+      matches = matches.filter((recipe) => recipe.cuisine === input_cuisine);
+    }
+    console.log(matches);
 
     if (matches.length != 0) {
       let htmlContent = "";
