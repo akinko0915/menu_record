@@ -16,8 +16,8 @@ async function getRecipes() {
 
 const searchedRecipes = () => {
   const inputIngredient = document.querySelector(".ingredient");
-  const inputCategory = document.querySelector(".category");
-  const inputCuisine = document.querySelector(".cuisine");
+  const inputCategory = document.querySelector("#category");
+  const inputCuisine = document.querySelector("#cuisine");
   const searchButton = document.querySelector(".search-recipe");
   const result = document.querySelector(".result_recipe");
 
